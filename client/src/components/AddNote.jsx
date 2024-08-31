@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import NotesServiceInstance from '../services/NotesService';
 
 const AddNote = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
 
   const addNote = async (e) => {
     e.preventDefault();
@@ -19,8 +20,7 @@ const AddNote = () => {
       setSubmitted(true);
       setTimeout(() => {
         setSubmitted(false);
-        setTitle('');
-        setDescription('');
+        navigate('/');
       }, 2000);
     } catch (error) {
       console.log(error);

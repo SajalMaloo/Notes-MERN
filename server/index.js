@@ -16,7 +16,7 @@ app.use(express.json());
 app.get('/api/notes', async (req, res) => {
   try {
     const notes = await NotesModel.find({});
-    if (!notes || !notes?.length) {
+    if (!notes) {
       return res.sendStatus(404)
     }
     return res.status(201).json(notes);
